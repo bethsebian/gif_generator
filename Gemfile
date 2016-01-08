@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Add the giphy gem for reaching the giphy API
+gem 'giphy'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
