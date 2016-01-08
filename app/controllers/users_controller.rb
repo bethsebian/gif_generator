@@ -8,9 +8,14 @@ class UsersController < ApplicationController
 
     if @user.save
       # session[:user_id] = @user.id
+      flash[:notice] = "Account successfully created."
       redirect_to @user
     else
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
 private
