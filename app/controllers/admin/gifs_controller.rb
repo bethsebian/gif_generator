@@ -22,6 +22,6 @@ class Admin::GifsController < ApplicationController
 
   def get_gif_url
     gif_data = Giphy.random(gif_params[:search_term])
-    gif_data.url.to_s
+    gif_data.image_original_url.to_s
   end
 end

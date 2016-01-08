@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :gifs, only: [:new, :create]
   end
 
-  resources :gifs, only: [:index]
+  resources :gifs, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
 
 end
