@@ -1,0 +1,6 @@
+<%= form_for([:admin, @gif]) do |f| %>
+  <%= f.label :search_term %>
+  <%= f.text_field :search_term %>
+
+  <%= f.submit 'Get GIPHY' %>
+<% end %>
