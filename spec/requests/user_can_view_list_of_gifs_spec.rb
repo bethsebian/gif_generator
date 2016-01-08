@@ -11,7 +11,6 @@ RSpec.describe "UserCanViewListOfGifs", type: :request do
       piglet_gif = piglet_category.gifs.create(search_term: 'piglet', image_url: 'http://piglet.com')
 
       visit gifs_path
-      save_and_open_page
       within '#kitten' do
         expect(page).to have_css("img[src*='http://kitten.cute']")
         expect(page).to have_content('kitten')
