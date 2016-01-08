@@ -18,5 +18,24 @@ RSpec.describe "GuestCanCreateAccounts", type: :request do
 
       expect(user.role).to eq(0)
     end
+
+    it "guest can create an admin user account" do
+      visit new_user_path
+
+      fill_in "Username", with: "admin"
+      fill_in "Password", with: "password"
+      fill_in "Password confirmation", with: "password"
+      check "Admin"
+      click_on "Create Account"
+
+      admin = User.last
+
+      expect(page).to have_content("Account successfully created")
+      expect(page).to have_content("Welcome, admin!")
+      expect(current_path).to eq(user_path(admin))
+
+      expect(admin.role).to eq(1)
+    end
+
   end
 end

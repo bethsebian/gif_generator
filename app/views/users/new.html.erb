@@ -10,5 +10,8 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
+  <%= f.check_box :role %>
+  <%= f.label :role, 'Admin' %>
+
   <%= f.submit 'Create Account' %>
 <% end %>
