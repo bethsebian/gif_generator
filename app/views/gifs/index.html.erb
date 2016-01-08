@@ -1,0 +1,12 @@
+<h1>Gifs by Category</h1>
+
+
+<% @categories.each do |category| %>
+	<div id="<%= category.name %>">
+		<h2> <%= category.name %> </h2>
+		<% category.gifs.each do |gif| %>
+			<br>
+			<img src="<%= gif.image_url %>">
+		<% end %>
+	</div>
+<% end %>
