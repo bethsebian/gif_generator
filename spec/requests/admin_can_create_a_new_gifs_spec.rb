@@ -5,7 +5,6 @@ RSpec.describe "AdminCanCreateANewGifs", type: :request do
     it "creates a new gif with a category" do
       admin = User.new(username: 'admin', password: 'password', role: 1)
 
-      # ApplicationController.any_instance.stub(session[:user_id]).returns(admin.id)
       ApplicationController.any_instance.stub(:current_user).with(admin)
 
       visit new_admin_gif_path
