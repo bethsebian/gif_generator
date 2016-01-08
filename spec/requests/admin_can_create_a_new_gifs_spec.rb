@@ -12,7 +12,6 @@ RSpec.describe "AdminCanCreateANewGifs", type: :request do
 
       fill_in "Search term", with: 'funny kitten'
       click_on "Get GIPHY"
-      click_on "Save GIPHY"
 
       expect(Gif.count).to eq(1)
       expect(Gif.last.category.name).to eq('funny kitten')
