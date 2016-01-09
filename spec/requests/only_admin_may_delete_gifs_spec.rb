@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
   describe "GET /gifs" do
     it "allows admin to delete gif from index" do
-      admin = User.new(username: 'admin', password: 'password', role: 1)
+      admin = User.create(username: 'admin', password: 'password', role: 1)
 
       ApplicationController.any_instance.stub(:current_user).and_return(admin)
       category = Category.create(name: 'kitten')
@@ -18,7 +18,7 @@ RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
     end
 
     it "does not allow regular user to delete gif from index" do
-      user = User.new(username: 'user', password: 'password', role: 0)
+      user = User.create(username: 'user', password: 'password', role: 0)
 
       ApplicationController.any_instance.stub(:current_user).and_return(user)
       category = Category.create(name: 'kitten')
@@ -30,7 +30,7 @@ RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
     end
 
     it "does not delete category if gifs still exist for that category" do
-      admin = User.new(username: 'admin', password: 'password', role: 1)
+      admin = User.create(username: 'admin', password: 'password', role: 1)
 
       ApplicationController.any_instance.stub(:current_user).and_return(admin)
       category = Category.create(name: 'kitten')
@@ -48,7 +48,7 @@ RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
 
   describe "GET /gifs/1" do
     it "allows admin to delete gif from show" do
-      admin = User.new(username: 'admin', password: 'password', role: 1)
+      admin = User.create(username: 'admin', password: 'password', role: 1)
 
       ApplicationController.any_instance.stub(:current_user).and_return(admin)
       category = Category.create(name: 'kitten')
@@ -63,7 +63,7 @@ RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
     end
 
     it "does not allow regular user to delete gif from show" do
-      user = User.new(username: 'user', password: 'password', role: 0)
+      user = User.create(username: 'user', password: 'password', role: 0)
 
       ApplicationController.any_instance.stub(:current_user).and_return(user)
       category = Category.create(name: 'kitten')

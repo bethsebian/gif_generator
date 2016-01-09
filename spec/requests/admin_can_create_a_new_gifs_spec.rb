@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "AdminCanCreateANewGifs", type: :request do
   describe "GET /new_admin_gif" do
     it "admin creates a new gif with a category" do
-      admin = User.new(username: 'admin', password: 'password', role: 1)
+      admin = User.create(username: 'admin', password: 'password', role: 1)
 
       ApplicationController.any_instance.stub(:current_user).and_return(admin)
 
