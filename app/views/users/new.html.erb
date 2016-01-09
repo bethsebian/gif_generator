@@ -2,16 +2,16 @@
 
 <%= form_for(@user) do |f| %>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username %> <br>
 
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %> <br>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %> <br>
 
   <%= f.check_box :role %>
-  <%= f.label :role, 'Admin' %>
+  <%= f.label :role, 'Admin' %> <br>
 
   <%= f.submit 'Create Account' %>
 <% end %>
