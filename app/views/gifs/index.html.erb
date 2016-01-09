@@ -11,6 +11,12 @@
 		<% category.gifs.each do |gif| %>
 			<br>
 			<img src="<%= gif.image_url %>">
+
+      <%= link_to 'View Gif', gif_path(gif) %>
+
+      <% if current_user && current_user.admin? %>
+        <%= link_to 'Delete', gif_path(gif), method: :delete %>
+      <% end %>
 		<% end %>
 	</div>
 <% end %>
