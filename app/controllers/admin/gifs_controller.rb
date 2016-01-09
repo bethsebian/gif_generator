@@ -19,15 +19,9 @@ class Admin::GifsController < ApplicationController
   private
 
   def verify_admin
-    if current_user && current_user.admin?
-    else
-      
+    unless current_user && current_user.admin?
       render file: 'public/404'
     end
-    #
-    # unless current_user && current_user.admin?
-    #   redirect_to file: 'public/404'
-    # end
   end
 
   def gif_params
