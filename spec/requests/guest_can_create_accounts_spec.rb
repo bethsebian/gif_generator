@@ -16,7 +16,7 @@ RSpec.describe "GuestCanCreateAccounts", type: :request do
       expect(page).to have_content("Welcome, user!")
       expect(current_path).to eq(user_path(user))
 
-      expect(user.role).to eq(0)
+      expect(user.role).to eq("default")
     end
 
     it "guest can create an admin user account" do
@@ -34,7 +34,7 @@ RSpec.describe "GuestCanCreateAccounts", type: :request do
       expect(page).to have_content("Welcome, admin!")
       expect(current_path).to eq(user_path(admin))
 
-      expect(admin.role).to eq(1)
+      expect(admin.role).to eq("admin")
     end
 
   end

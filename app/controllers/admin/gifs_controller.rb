@@ -1,4 +1,6 @@
 class Admin::GifsController < ApplicationController
+  before_action :verify_admin #, only: [:new, :create]
+
   def new
     @gif = Gif.new
   end
@@ -15,6 +17,12 @@ class Admin::GifsController < ApplicationController
   end
 
   private
+
+  def verify_admin
+    unless current_user && current_user.admin?
+      render file: 'public/404'
+    end
+  end
 
   def gif_params
     params.require(:gif).permit(:search_term)

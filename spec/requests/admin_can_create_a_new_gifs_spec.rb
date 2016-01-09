@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "AdminCanCreateANewGifs", type: :request do
   describe "GET /new_admin_gif" do
-    it "creates a new gif with a category" do
+    it "admin creates a new gif with a category" do
       admin = User.new(username: 'admin', password: 'password', role: 1)
 
-      ApplicationController.any_instance.stub(:current_user).with(admin)
+      ApplicationController.any_instance.stub(:current_user).and_return(admin)
 
       visit new_admin_gif_path
 
@@ -19,6 +19,16 @@ RSpec.describe "AdminCanCreateANewGifs", type: :request do
       expect(gif.search_term).to eq('funny kitten')
 
       expect(current_path).to eq(gif_path(gif))
+    end
+
+    it "general user cannot create a new gif" do
+      user = User.create(username: 'user', password: 'password', role: 0)
+
+      ApplicationController.any_instance.stub(:current_user).and_return(user)
+
+      visit new_admin_gif_path
+
+      expect(page).to have_content("The page you were looking for doesn't exist")
     end
   end
 end
