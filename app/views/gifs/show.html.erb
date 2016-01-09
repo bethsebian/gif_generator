@@ -1,3 +1,7 @@
 <h1>Category: <%= @gif.category.name %></h1>
 
 <img src="<%= @gif.image_url %>" />
+
+<% if current_user && current_user.admin? %>
+  <%= link_to 'Delete', gif_path(@gif), method: :delete %>
+<% end %>
