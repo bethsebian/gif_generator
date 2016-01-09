@@ -10,7 +10,7 @@ RSpec.describe "RegisteredUserCanLogins", type: :request do
       fill_in "Username", with: "user"
       fill_in "Password", with: "password"
 
-      click_on "Log in"
+      click_button "Log in"
 
       expect(page).to have_content("Welcome, user!")
       expect(page).to have_content("Successfully Logged In!")

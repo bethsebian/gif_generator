@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GifGenerator</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% flash.each do |type, msg| %>
-  <%= content_tag :div, msg, class: "flash_#{type}" %>
-  <% end %>
-<%= yield %>
+  <head>
+    <title>GifGenerator</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: "flash_#{type}" %>
+    <% end %>
 
-</body>
+    <% if current_user %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Log in", login_path %>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
 </html>
