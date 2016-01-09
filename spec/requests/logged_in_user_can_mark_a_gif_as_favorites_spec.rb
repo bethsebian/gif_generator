@@ -12,7 +12,7 @@ RSpec.describe "LoggedInUserCanMarkAGifAsFavorites", type: :request do
       visit gifs_path
       click_on "Save to Favorites"
 
-      expect(current_path).to eq(user_gifs_path)
+      expect(current_path).to eq(user_favorites_path(user))
       expect(page).to have_content('kitten')
       expect(page).to have_css("img[src*='http://kitten.com']")
     end

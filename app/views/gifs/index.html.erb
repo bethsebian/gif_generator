@@ -16,7 +16,7 @@
 
       <% if current_user %>
         <%= form_tag(user_favorites_path(current_user)) do %>
-          <%= hidden_field_tag :gif_id, required: true, value: gif.id %>
+          <%= hidden_field_tag :gif_id, gif.id %>
           <%= submit_tag 'Save to Favorites' %>
         <% end %>
       <% end %>
