@@ -16,5 +16,7 @@ RSpec.describe "RegisteredUserCanLogins", type: :request do
       expect(page).to have_content("Successfully Logged In!")
       expect(current_path).to eq(user_path(user))
     end
+
+    # add more tests later for sad path (wrong username, wrong password)
   end
 end
