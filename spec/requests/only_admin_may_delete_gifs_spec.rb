@@ -15,7 +15,18 @@ RSpec.describe "OnlyAdminMayDeleteGifs", type: :request do
 
       expect(page).to_not have_content("kitten")
       expect(page).to_not have_css("img")
+    end
 
+    it "does not allow regular user to delete gif" do
+      user = User.new(username: 'user', password: 'password', role: 0)
+
+      ApplicationController.any_instance.stub(:current_user).and_return(user)
+      category = Category.create(name: 'kitten')
+      category.gifs.create(search_term: 'kitten', image_url: 'http://kitten.com')
+
+      visit gifs_path
+
+      expect(page).to_not have_link("Delete")
     end
   end
 
