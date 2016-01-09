@@ -1,5 +1,5 @@
 class Admin::GifsController < ApplicationController
-  before_action :verify_admin, only: [:new, :create]
+  before_action :verify_admin #, only: [:new, :create]
 
   def new
     @gif = Gif.new
@@ -19,9 +19,15 @@ class Admin::GifsController < ApplicationController
   private
 
   def verify_admin
-    unless current_user && current_user.admin?
-      redirect_to file: 'public/404'
+    if current_user && current_user.admin?
+    else
+      
+      render file: 'public/404'
     end
+    #
+    # unless current_user && current_user.admin?
+    #   redirect_to file: 'public/404'
+    # end
   end
 
   def gif_params
