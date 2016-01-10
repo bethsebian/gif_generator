@@ -8,6 +8,7 @@
 			<img src="<%= gif.image_url %>">
 
       <%= link_to 'View Gif', gif_path(gif) %>
+			<%= link_to "Delete", user_favorites_path(current_user, gif.id), method: :delete %>
 		<% end %>
 	</div>
 <% end %>
