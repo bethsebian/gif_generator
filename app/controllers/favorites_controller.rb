@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def index
-    @categories = current_user.categories
+    @favorites = Favorite.includes(:gif, :category).where(user_id: params[:user_id])#current_user.categories
+    @favorites_by_category = @favorites.group_by {|fav| fav.category.name }
   end
 
   def show
