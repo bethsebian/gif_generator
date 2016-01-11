@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :gifs, only: [:index, :show, :destroy]
   resources :users, only: [:new, :create, :show] do
-    resources :favorites, only: [:create, :index]
+    resources :favorites, only: [:create, :index, :show, :destroy]
   end
 
   get '/login', to: "sessions#new"

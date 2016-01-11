@@ -1,0 +1,3 @@
+<img src="<%= @gif.image_url %>">
+
+<%= link_to "Delete", user_favorite_path(current_user, id: @gif.id), method: :delete %>

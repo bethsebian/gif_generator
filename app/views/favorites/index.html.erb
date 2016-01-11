@@ -1,13 +1,14 @@
-<h2>Gifs by Category</h2>
+<h2>Favorite Gifs by Category</h2>
 
-<% @categories.each do |category| %>
-	<div id="<%= category.name %>">
-		<h2> <%= category.name %> </h2>
-		<% category.gifs.each do |gif| %>
-			<br>
-			<img src="<%= gif.image_url %>">
+<% @favorites_by_category.each do |category_name, favorites| %>
+	<div id="<%= category_name %>">
+		<h2> <%= category_name %> </h2>
 
-      <%= link_to 'View Gif', gif_path(gif) %>
-		<% end %>
+			<% favorites.each do |favorite| %>
+				<br>
+				<img src="<%= favorite.gif.image_url %>">
+
+	      <%= link_to 'View Gif', gif_path(favorite.gif) %>
+			<% end %>
 	</div>
 <% end %>
